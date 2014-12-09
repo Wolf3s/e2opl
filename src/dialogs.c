@@ -249,7 +249,7 @@ struct UIItem diaAbout[] = {
 	{UI_SPACER}, {UI_LABEL, 0, 1, -1, 0, 15, {.label = {"volca - BatRastard", -1}}}, {UI_BREAK},
         {UI_SPACER}, {UI_LABEL, 0, 1, -1, 0, 15, {.label = {"...and the anonymous ...", -1}}}, {UI_BREAK},
         {UI_BREAK},
-        {UI_SPACER}, {UI_LABEL, 0, 1, -1, 0, 15, {.label = {"s0ck3t (EXT2/USB support ...", -1}}}, {UI_BREAK},
+        {UI_SPACER}, {UI_LABEL, 0, 1, -1, 0, 15, {.label = {"s0ck3t (E2OPL, EXT2/USB ...", -1}}}, {UI_BREAK},
         {UI_SPACER}, {UI_LABEL, 0, 1, -1, 0, 15, {.label = {"...thanks SP193 for help)", -1}}}, {UI_BREAK},
 	{UI_SPLITTER},
 

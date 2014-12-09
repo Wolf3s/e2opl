@@ -10,11 +10,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/sng/open-ps2-loader.current/modules/iopcore/cdvdman/mass_driver.c</file>
-            <file>file:/home/sng/open-ps2-loader.current/modules/usb/usbhdfsd/ext2fs.c</file>
-            <file>file:/home/sng/open-ps2-loader.current/modules/usb/usbhdfsd/part_driver.c</file>
-            <file>file:/home/sng/open-ps2-loader.current/src/system.c</file>
-            <file>file:/home/sng/open-ps2-loader.current/modules/usb/usbhdfsd/usb_driver.c</file>
+            <file>file:/home/sng/e2opl-code/src/system.c</file>
         </group>
     </open-files>
 </project-private>

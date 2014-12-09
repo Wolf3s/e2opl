@@ -127,8 +127,6 @@ int part_connect(mass_dev* dev)
             }
         }
     }
-printf("dbg2 %d\n", count);
-while(1){}
 
     //s0ck3t
     if ( count == 0 ) {
