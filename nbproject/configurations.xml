@@ -1,0 +1,557 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="94">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <df root="." name="0">
+      <df name="ee_core">
+        <df name="src">
+          <in>des.c</in>
+          <in>gsm_api.c</in>
+          <in>iopmgr.c</in>
+          <in>main.c</in>
+          <in>md4.c</in>
+          <in>modmgr.c</in>
+          <in>padhook.c</in>
+          <in>patches.c</in>
+          <in>smbauth.c</in>
+          <in>spu.c</in>
+          <in>syshook.c</in>
+          <in>tlb.c</in>
+          <in>util.c</in>
+        </df>
+      </df>
+      <df name="elfldr">
+        <in>elfldr.c</in>
+      </df>
+      <df name="labs">
+        <df name="genvmclab">
+          <in>genvmclab.c</in>
+        </df>
+        <df name="hdldsvrlab">
+          <in>hdldsvrlab.c</in>
+        </df>
+        <df name="lanlab">
+          <in>lanlab.c</in>
+        </df>
+        <df name="smblab">
+          <in>smblab.c</in>
+        </df>
+      </df>
+      <df name="modules">
+        <df name="cdvd">
+          <df name="discID">
+            <in>discID.c</in>
+          </df>
+        </df>
+        <df name="debug">
+          <df name="ioptrap">
+            <in>breakpoint.c</in>
+            <in>ioptrap.c</in>
+          </df>
+          <df name="ps2link">
+            <in>cmdHandler.c</in>
+            <in>excepHandler.c</in>
+            <in>net_fio.c</in>
+            <in>net_fsys.c</in>
+            <in>nprintf.c</in>
+            <in>ps2link.c</in>
+          </df>
+          <df name="udptty">
+            <in>udptty.c</in>
+          </df>
+        </df>
+        <df name="dev9">
+          <in>ps2dev9.c</in>
+        </df>
+        <df name="hdd">
+          <df name="atad">
+            <in>ps2atad.c</in>
+          </df>
+          <df name="hdldsvr">
+            <in>hdldsvr.c</in>
+          </df>
+          <df name="hdpro_atad">
+            <in>hdproatad.c</in>
+          </df>
+          <df name="ps2hdd">
+            <in>apa.c</in>
+            <in>cache.c</in>
+            <in>hdd.c</in>
+            <in>hdd_fio.c</in>
+            <in>journal.c</in>
+            <in>misc.c</in>
+          </df>
+        </df>
+        <df name="iopcore">
+          <df name="cddev">
+            <in>cddev.c</in>
+          </df>
+          <df name="cdvdfsv">
+            <in>cdvdfsv.c</in>
+            <in>ext2fs.c</in>
+            <in>ext2fs.h</in>
+          </df>
+          <df name="cdvdman">
+            <in>atad.c</in>
+            <in>cdvdman.c</in>
+            <in>dev9.c</in>
+            <in>hdpro_atad.c</in>
+            <in>ioplib_util.c</in>
+            <in>mass_driver.c</in>
+            <in>smb.c</in>
+          </df>
+          <df name="eesync">
+            <in>eesync.c</in>
+          </df>
+          <df name="imgdrv">
+            <in>imgdrv.c</in>
+          </df>
+        </df>
+        <df name="mcemu">
+          <in>mcemu.c</in>
+          <in>mcemu_io.c</in>
+          <in>mcemu_rpc.c</in>
+          <in>mcemu_sys.c</in>
+          <in>mcemu_var.c</in>
+        </df>
+        <df name="network">
+          <df name="smap">
+            <in>main.c</in>
+            <in>smap.c</in>
+            <in>xfer.c</in>
+          </df>
+          <df name="SMSTCPIP">
+            <in>api_lib.c</in>
+            <in>api_msg.c</in>
+            <in>etharp.c</in>
+            <in>icmp.c</in>
+            <in>ip.c</in>
+            <in>ip_addr.c</in>
+            <in>ip_frag.c</in>
+            <in>loopif.c</in>
+            <in>mem.c</in>
+            <in>memp.c</in>
+            <in>netif.c</in>
+            <in>pbuf.c</in>
+            <in>ps2ip.c</in>
+            <in>sockets.c</in>
+            <in>tcp.c</in>
+            <in>tcp_in.c</in>
+            <in>tcp_out.c</in>
+            <in>tcpip.c</in>
+            <in>udp.c</in>
+          </df>
+        </df>
+        <df name="ps2fs">
+          <in>bitmap.c</in>
+          <in>block.c</in>
+          <in>cache.c</in>
+          <in>dir.c</in>
+          <in>inode.c</in>
+          <in>journal.c</in>
+          <in>misc.c</in>
+          <in>pfs.c</in>
+          <in>pfs_fio.c</in>
+          <in>pfs_fioctl.c</in>
+          <in>super.c</in>
+        </df>
+        <df name="usb">
+          <df name="usbhdfsd">
+            <in>ext2fs.c</in>
+            <in>ext2fs.h</in>
+            <in>fat_driver.c</in>
+            <in>fat_write.c</in>
+            <in>fs_driver.c</in>
+            <in>part_driver.c</in>
+            <in>scache.c</in>
+            <in>usb_driver.c</in>
+            <in>usbhdfsd.c</in>
+          </df>
+        </df>
+        <df name="vmc">
+          <df name="genvmc">
+            <in>genvmc.c</in>
+          </df>
+          <df name="mcman">
+            <in>main.c</in>
+            <in>mcdev.c</in>
+            <in>mcsio2.c</in>
+            <in>ps1mc_io.c</in>
+            <in>ps2mc_io.c</in>
+          </df>
+        </df>
+        <df name="wip">
+          <df name="lanman">
+            <in>arp.c</in>
+            <in>lanman.c</in>
+            <in>smap.c</in>
+            <in>tcp.c</in>
+            <in>udptty.c</in>
+          </df>
+        </df>
+      </df>
+      <df name="pc">
+        <df name="genvmc">
+          <df name="src">
+            <in>genvmc.c</in>
+          </df>
+        </df>
+        <df name="iso2opl">
+          <df name="src">
+            <in>iso2opl.c</in>
+            <in>isofs.c</in>
+          </df>
+        </df>
+        <df name="opl2iso">
+          <df name="src">
+            <in>opl2iso.c</in>
+          </df>
+        </df>
+      </df>
+      <df name="src">
+        <in>OSDHistory.c</in>
+        <in>appsupport.c</in>
+        <in>atlas.c</in>
+        <in>config.c</in>
+        <in>debug.c</in>
+        <in>dia.c</in>
+        <in>dialogs.c</in>
+        <in>ethsupport.c</in>
+        <in>fntsys.c</in>
+        <in>gui.c</in>
+        <in>hdd.c</in>
+        <in>hddsupport.c</in>
+        <in>ioman.c</in>
+        <in>lang.c</in>
+        <in>menusys.c</in>
+        <in>opl.c</in>
+        <in>pad.c</in>
+        <in>renderman.c</in>
+        <in>supportbase.c</in>
+        <in>system.c</in>
+        <in>texcache.c</in>
+        <in>textures.c</in>
+        <in>themes.c</in>
+        <in>usbsupport.c</in>
+        <in>util.c</in>
+      </df>
+    </df>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceFolderFilter>^(nbproject)$</sourceFolderFilter>
+  <sourceRootList>
+    <Elem>.</Elem>
+  </sourceRootList>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Default" type="0">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>false</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <codeAssistance>
+      </codeAssistance>
+      <makefileType>
+        <makeTool>
+          <buildCommandWorkingDir>.</buildCommandWorkingDir>
+          <buildCommand>${MAKE} -f Makefile</buildCommand>
+          <cleanCommand>${MAKE} -f Makefile clean</cleanCommand>
+          <executablePath></executablePath>
+        </makeTool>
+      </makefileType>
+      <item path="ee_core/src/des.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="ee_core/src/gsm_api.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="ee_core/src/iopmgr.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="ee_core/src/main.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="ee_core/src/md4.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="ee_core/src/modmgr.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="ee_core/src/padhook.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="ee_core/src/patches.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="ee_core/src/smbauth.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="ee_core/src/spu.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="ee_core/src/syshook.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="ee_core/src/tlb.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="ee_core/src/util.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="elfldr/elfldr.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="labs/genvmclab/genvmclab.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="labs/hdldsvrlab/hdldsvrlab.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="labs/lanlab/lanlab.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="labs/smblab/smblab.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/cdvd/discID/discID.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/debug/ioptrap/breakpoint.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/debug/ioptrap/ioptrap.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/debug/ps2link/cmdHandler.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/debug/ps2link/excepHandler.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+      </item>
+      <item path="modules/debug/ps2link/net_fio.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/debug/ps2link/net_fsys.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/debug/ps2link/nprintf.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/debug/ps2link/ps2link.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/debug/udptty/udptty.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/dev9/ps2dev9.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/hdd/atad/ps2atad.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/hdd/hdldsvr/hdldsvr.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/hdd/hdpro_atad/hdproatad.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/hdd/ps2hdd/apa.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/hdd/ps2hdd/cache.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/hdd/ps2hdd/hdd.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/hdd/ps2hdd/hdd_fio.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/hdd/ps2hdd/journal.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/hdd/ps2hdd/misc.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/iopcore/cddev/cddev.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/iopcore/cdvdfsv/cdvdfsv.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/iopcore/cdvdfsv/ext2fs.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="modules/iopcore/cdvdfsv/ext2fs.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="modules/iopcore/cdvdman/atad.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/iopcore/cdvdman/cdvdman.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/iopcore/cdvdman/dev9.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/iopcore/cdvdman/hdpro_atad.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+      </item>
+      <item path="modules/iopcore/cdvdman/ioplib_util.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+      </item>
+      <item path="modules/iopcore/cdvdman/mass_driver.c"
+            ex="false"
+            tool="0"
+            flavor2="2">
+      </item>
+      <item path="modules/iopcore/cdvdman/smb.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/iopcore/eesync/eesync.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/iopcore/imgdrv/imgdrv.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/mcemu/mcemu.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/mcemu/mcemu_io.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/mcemu/mcemu_rpc.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/mcemu/mcemu_sys.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/mcemu/mcemu_var.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/network/SMSTCPIP/api_lib.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/network/SMSTCPIP/api_msg.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/network/SMSTCPIP/etharp.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/network/SMSTCPIP/icmp.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/network/SMSTCPIP/ip.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/network/SMSTCPIP/ip_addr.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/network/SMSTCPIP/ip_frag.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/network/SMSTCPIP/loopif.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/network/SMSTCPIP/mem.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/network/SMSTCPIP/memp.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/network/SMSTCPIP/netif.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/network/SMSTCPIP/pbuf.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/network/SMSTCPIP/ps2ip.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/network/SMSTCPIP/sockets.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/network/SMSTCPIP/tcp.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/network/SMSTCPIP/tcp_in.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/network/SMSTCPIP/tcp_out.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/network/SMSTCPIP/tcpip.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/network/SMSTCPIP/udp.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/network/smap/main.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/network/smap/smap.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/network/smap/xfer.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/ps2fs/bitmap.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/ps2fs/block.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/ps2fs/cache.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/ps2fs/dir.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/ps2fs/inode.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/ps2fs/journal.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/ps2fs/misc.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/ps2fs/pfs.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/ps2fs/pfs_fio.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/ps2fs/pfs_fioctl.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/ps2fs/super.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/usb/usbhdfsd/ext2fs.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="modules/usb/usbhdfsd/ext2fs.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="modules/usb/usbhdfsd/fat_driver.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/usb/usbhdfsd/fat_write.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/usb/usbhdfsd/fs_driver.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/usb/usbhdfsd/part_driver.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/usb/usbhdfsd/scache.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/usb/usbhdfsd/usb_driver.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/usb/usbhdfsd/usbhdfsd.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/vmc/genvmc/genvmc.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/vmc/mcman/main.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/vmc/mcman/mcdev.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/vmc/mcman/mcsio2.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/vmc/mcman/ps1mc_io.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/vmc/mcman/ps2mc_io.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/wip/lanman/arp.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/wip/lanman/lanman.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/wip/lanman/smap.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/wip/lanman/tcp.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="modules/wip/lanman/udptty.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="pc/genvmc/src/genvmc.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="pc/iso2opl/src/iso2opl.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="pc/iso2opl/src/isofs.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="pc/opl2iso/src/opl2iso.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="src/OSDHistory.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="src/appsupport.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="src/atlas.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="src/config.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="src/debug.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="src/dia.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="src/dialogs.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="src/ethsupport.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="src/fntsys.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="src/gui.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="src/hdd.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="src/hddsupport.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="src/ioman.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="src/lang.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="src/menusys.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="src/opl.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="src/pad.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="src/renderman.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="src/supportbase.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="src/system.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="src/texcache.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="src/textures.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="src/themes.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="src/usbsupport.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="src/util.c" ex="false" tool="0" flavor2="2">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>
