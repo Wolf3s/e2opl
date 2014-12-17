@@ -675,7 +675,7 @@ int cbw_scsi_read_sector(mass_dev* dev, unsigned int lba, void* buffer, int sect
 
 
 //s0ck3t
-inline static u32 ext2_file_sectors_map2physical_sector(register u32 sector, register u32 *can_read_sectors) {
+inline static u32 ext2_file_sectors_map2physical_sector(register u32 sector, u32 *can_read_sectors) {
     register u32 entry_addr = 0, start_sector, end_sector, physical_sector;
     register u32 passed = 0, past_passed = 0, holds = 0, same_holds = 0;
 

@@ -1292,63 +1292,63 @@ int ext2_pack_inode_sectors_map(unsigned char *mapBuff, int mapBuffLen, unsigned
 }
 
 
-int ext2_read_file_sector_by_map(unsigned char *mapBuff, register int mapBuffLen, register unsigned int sector, unsigned char *buff) {
-    register int entry_addr = 0;
-    register unsigned int start_sector = 0, holds = 0, same_holds = 0;
-    register unsigned int passed = 0, past_passed = 0;
-    unsigned char *sbuf;
-    register int i;
-
-    while (entry_addr < mapBuffLen) {
-        start_sector = 
-            (mapBuff + entry_addr)[0] + 
-            ((mapBuff + entry_addr)[1] << 8) + 
-            ((mapBuff + entry_addr)[2] << 16) + 
-            ((mapBuff + entry_addr)[3] << 24);
-        entry_addr += 4;
-
-        if (same_holds == 0) {
-            holds = 
-                (mapBuff + entry_addr)[0] + 
-                ((mapBuff + entry_addr)[1] << 8) + 
-                ((mapBuff + entry_addr)[2] << 16) + 
-                ((mapBuff + entry_addr)[3] << 24);
-            entry_addr += 4;
-            
-            if (holds > 0 && (holds & 0x80000000) == 0 && holds % 2 != 0) {
-                holds++;
-            }
-        }
-        else {
-            same_holds--;
-        }
-
-        if (!start_sector || !holds) {
-            //should not get here if sector is correct
-            return -1;
-        }
-
-        if ((holds & 0x80000000) != 0) {
-            same_holds = (holds & 0x0FF00000) >> 20;
-            holds = (holds & 0x000FFFFF) + 1;
-        }
-
-        passed += holds;
-
-        if (sector < passed) {
-            READ_SECTOR(ext2_volume->dev, start_sector + sector - past_passed, sbuf);
-            for (i = 0; i < 512; i++) {
-                buff[i] = sbuf[i];
-            }
-
-            return 1;
-        }
-
-        past_passed += holds;
-    }
-
-    return 0;
-}
+//int ext2_read_file_sector_by_map(unsigned char *mapBuff, register int mapBuffLen, register unsigned int sector, unsigned char *buff) {
+//    register int entry_addr = 0;
+//    register unsigned int start_sector = 0, holds = 0, same_holds = 0;
+//    register unsigned int passed = 0, past_passed = 0;
+//    unsigned char *sbuf;
+//    register int i;
+//
+//    while (entry_addr < mapBuffLen) {
+//        start_sector = 
+//            (mapBuff + entry_addr)[0] + 
+//            ((mapBuff + entry_addr)[1] << 8) + 
+//            ((mapBuff + entry_addr)[2] << 16) + 
+//            ((mapBuff + entry_addr)[3] << 24);
+//        entry_addr += 4;
+//
+//        if (same_holds == 0) {
+//            holds = 
+//                (mapBuff + entry_addr)[0] + 
+//                ((mapBuff + entry_addr)[1] << 8) + 
+//                ((mapBuff + entry_addr)[2] << 16) + 
+//                ((mapBuff + entry_addr)[3] << 24);
+//            entry_addr += 4;
+//            
+//            if (holds > 0 && (holds & 0x80000000) == 0 && holds % 2 != 0) {
+//                holds++;
+//            }
+//        }
+//        else {
+//            same_holds--;
+//        }
+//
+//        if (!start_sector || !holds) {
+//            //should not get here if sector is correct
+//            return -1;
+//        }
+//
+//        if ((holds & 0x80000000) != 0) {
+//            same_holds = (holds & 0x0FF00000) >> 20;
+//            holds = (holds & 0x000FFFFF) + 1;
+//        }
+//
+//        passed += holds;
+//
+//        if (sector < passed) {
+//            READ_SECTOR(ext2_volume->dev, start_sector + sector - past_passed, sbuf);
+//            for (i = 0; i < 512; i++) {
+//                buff[i] = sbuf[i];
+//            }
+//
+//            return 1;
+//        }
+//
+//        past_passed += holds;
+//    }
+//
+//    return 0;
+//}
 
 
 int ext2_fs_ioctl(iop_file_t *fd, unsigned long request, void *data) {
