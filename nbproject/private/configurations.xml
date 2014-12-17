@@ -2,6 +2,48 @@
 <configurationDescriptor version="94">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <df root="." name="0">
+      <df name="asm">
+        <in>L1_icon.s</in>
+        <in>L2_icon.s</in>
+        <in>R1_icon.s</in>
+        <in>R2_icon.s</in>
+        <in>alt_ee_core.s</in>
+        <in>app_icon.s</in>
+        <in>circle_icon.s</in>
+        <in>cross_icon.s</in>
+        <in>down_icon.s</in>
+        <in>ee_core.s</in>
+        <in>eesync.s</in>
+        <in>elfldr.s</in>
+        <in>eth_icon.s</in>
+        <in>freesans.s</in>
+        <in>hdd_icon.s</in>
+        <in>icon_icn.s</in>
+        <in>icon_sys.s</in>
+        <in>icon_sys_A.s</in>
+        <in>icon_sys_J.s</in>
+        <in>imgdrv.s</in>
+        <in>left_icon.s</in>
+        <in>load0.s</in>
+        <in>load1.s</in>
+        <in>load2.s</in>
+        <in>load3.s</in>
+        <in>load4.s</in>
+        <in>load5.s</in>
+        <in>load6.s</in>
+        <in>load7.s</in>
+        <in>logo.s</in>
+        <in>right_icon.s</in>
+        <in>select_icon.s</in>
+        <in>smb_cdvdman.s</in>
+        <in>square_icon.s</in>
+        <in>start_icon.s</in>
+        <in>triangle_icon.s</in>
+        <in>up_icon.s</in>
+        <in>usb_4Ksectors_cdvdman.s</in>
+        <in>usb_cdvdman.s</in>
+        <in>usb_icon.s</in>
+      </df>
       <df name="branches">
       </df>
       <df name="ee_core">
@@ -399,6 +441,8 @@
             <in>udptty.h</in>
           </df>
         </df>
+      </df>
+      <df name="obj">
       </df>
       <df name="pc">
         <df name="genvmc">

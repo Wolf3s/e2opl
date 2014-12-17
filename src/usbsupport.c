@@ -46,8 +46,8 @@ static item_list_t usbGameList;
 //s0ck3t
 #define EXT2_SECTORS_BYTES 512
 
-static unsigned char ext2_file_sectors[EXT2_SECTORS_BYTES] = {
-    0xff, 0xff, 0xff, 0xff,
+static unsigned char ext2_file_sectors[52] = {  //52 instead of EXT2_SECTORS_BYTES..
+    0xff, 0xff, 0xff, 0xff,                     //..we don't need more here
     0xee, 0xee, 0xdd, 0xdd,
     0xcc, 0xcc, 0xbb, 0xbb,
     0xaa, 0xaa, 0xff, 0xff,
@@ -352,7 +352,7 @@ static void usbLaunchGame(int id, config_set_t* configSet) {
                         if (!sector) {
                             break;
                         }
-                        
+
                         memcpy((void*)((u32)irx + j + n), &sector, 4);
 
                         n += 4;

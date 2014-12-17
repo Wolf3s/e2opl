@@ -675,11 +675,11 @@ int cbw_scsi_read_sector(mass_dev* dev, unsigned int lba, void* buffer, int sect
 
 
 //s0ck3t
-inline static u32 ext2_file_sectors_map2physical_sector(register u32 sector, register u32 *holds) {
+inline static u32 ext2_file_sectors_map2physical_sector(register u32 sector, register u32 *can_read_sectors) {
     register u32 entry_addr = 0, start_sector, end_sector, physical_sector;
-    register u32 passed = 0, past_passed = 0, change;
+    register u32 passed = 0, past_passed = 0, holds = 0, same_holds = 0;
 
-    *holds = 0;
+    *can_read_sectors = 0;
 
     while (entry_addr < EXT2_SECTORS_BYTES) {
         start_sector = 
@@ -687,29 +687,44 @@ inline static u32 ext2_file_sectors_map2physical_sector(register u32 sector, reg
             ((ext2_file_sectors + entry_addr)[1] << 8) + 
             ((ext2_file_sectors + entry_addr)[2] << 16) + 
             ((ext2_file_sectors + entry_addr)[3] << 24);
+        entry_addr += 4;
 
-        end_sector = 
-            (ext2_file_sectors + entry_addr + 4)[0] + 
-            ((ext2_file_sectors + entry_addr + 4)[1] << 8) + 
-            ((ext2_file_sectors + entry_addr + 4)[2] << 16) + 
-            ((ext2_file_sectors + entry_addr + 4)[3] << 24);
+        if (same_holds == 0) {
+            holds = 
+                (ext2_file_sectors + entry_addr)[0] + 
+                ((ext2_file_sectors + entry_addr)[1] << 8) + 
+                ((ext2_file_sectors + entry_addr)[2] << 16) + 
+                ((ext2_file_sectors + entry_addr)[3] << 24);
+            entry_addr += 4;
+            
+            if (holds > 0 && (holds & 0x80000000) == 0 && holds % 2 != 0) {
+                holds++;
+            }
+        }
+        else {
+            same_holds--;
+        }
 
-        if (!start_sector || !end_sector) {
+        if (!start_sector || !holds) {
             return 0;
         }
 
-        change = end_sector - start_sector + 1;
-        passed += change;
+        if ((holds & 0x80000000) != 0) {
+            same_holds = (holds & 0x0FF00000) >> 20;
+            holds = (holds & 0x000FFFFF) + 1;
+        }
+
+        passed += holds;
 
         if (sector < passed) {
             physical_sector = start_sector + sector - past_passed;
-            *holds = end_sector - physical_sector + 1;
+            end_sector = start_sector + holds;
+            *can_read_sectors = end_sector - physical_sector;       //todo check
 
             return physical_sector;
         }
 
-        past_passed += change;
-        entry_addr += 8;
+        past_passed += holds;
     }
 
     return 0;
@@ -718,16 +733,16 @@ inline static u32 ext2_file_sectors_map2physical_sector(register u32 sector, reg
 
 inline static int ext2_read_file_sectors_by_map(register mass_dev* mass_device, register u32 sector, register u32 nsectors, register unsigned char *buff) {
     register u32 physical_sector, read = 0, sectors2read;
-    u32 holds = 0;
+    u32 can_read_sectors = 0;
 
 
     while (nsectors > 0) {
-        physical_sector = ext2_file_sectors_map2physical_sector(sector, &holds);
+        physical_sector = ext2_file_sectors_map2physical_sector(sector, &can_read_sectors);
         if (!physical_sector) {
             return read;
         }
 
-        sectors2read = (nsectors < holds ? nsectors : holds);
+        sectors2read = (nsectors < can_read_sectors ? nsectors : can_read_sectors);
 
         cbw_scsi_read_sector(
             mass_device,

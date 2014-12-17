@@ -27,21 +27,7 @@
 #include "ext2fs.h"
 
 
-static unsigned char ext2_file_sectors[EXT2_SECTORS_BYTES] = {
-    0xff, 0xff, 0xff, 0xff,
-    0xee, 0xee, 0xdd, 0xdd,
-    0xcc, 0xcc, 0xbb, 0xbb,
-    0xaa, 0xaa, 0xff, 0xff,
-    0xee, 0xee, 0xdd, 0xdd,
-    0xcc, 0xcc, 0xbb, 0xbb,
-    0xaa, 0xaa, 0xff, 0xff,
-    0xee, 0xee, 0xdd, 0xdd,
-    0xcc, 0xcc, 0xbb, 0xbb,
-    0xaa, 0xaa, 0xff, 0xff,
-    0xee, 0xee, 0xdd, 0xdd,
-    0xcc, 0xcc, 0xbb, 0xbb,
-    0xaa, 0xaa, 0xff, 0xff
-};
+static unsigned char *ext2_file_sectors;
 
 
 uint16_t __le16_to_cpu(register uint16_t x) {
@@ -664,21 +650,21 @@ unsigned int ext2_get_inode_sectors_map(struct ext2_inode *inode, unsigned char 
     register int length;
     register size_t read;
     register long long real_size, offset = 0;
-    register int entryAddr = 0;
-    unsigned int sector;
+    register int entry_addr = 0;
+    unsigned int start_sector, end_sector, holds;
     int shift;
 
     memset(mapBuff, 0, mapBuffLen);
 
     last_physical = ext2_get_block_addr(inode, 0);
-    sector = ext2_volume->start + (last_physical * (blocksize / EXT2_SECTOR_SIZE));
-    memcpy(mapBuff + entryAddr, &sector, 4);   //copy start sector
-    entryAddr += 4;
+    start_sector = ext2_volume->start + (last_physical * (blocksize / EXT2_SECTOR_SIZE));
+    memcpy(mapBuff + entry_addr, &start_sector, 4);   //copy start sector
+    entry_addr += 4;
     entries++;
 
     real_size = ((unsigned long long)inode->i_dir_acl << 32) | inode->i_size;
     while (offset < real_size) {
-        if (entryAddr > mapBuffLen) {
+        if (entry_addr > mapBuffLen) {
             return -1;
         }
 
@@ -699,14 +685,15 @@ unsigned int ext2_get_inode_sectors_map(struct ext2_inode *inode, unsigned char 
                 if (physical != last_physical) {
                     change = physical - last_physical;
                     if (change > 1 || change < 0) {
-                        sector = ext2_volume->start + (last_physical * (blocksize / EXT2_SECTOR_SIZE));
-                        sector += blocksize / 512 - 1;
-                        memcpy(mapBuff + entryAddr, &sector, 4);       //copy end sector
-                        entryAddr += 4;
+                        end_sector = ext2_volume->start + (last_physical * (blocksize / EXT2_SECTOR_SIZE));
+                        end_sector += blocksize / 512 - 1;
+                        holds = end_sector - start_sector;
+                        memcpy(mapBuff + entry_addr, &holds, 4);       //copy sectors to end
+                        entry_addr += 4;
 
-                        sector = ext2_volume->start + (physical * (blocksize / EXT2_SECTOR_SIZE));
-                        memcpy(mapBuff + entryAddr, &sector, 4);       //copy start sector
-                        entryAddr += 4;
+                        start_sector = ext2_volume->start + (physical * (blocksize / EXT2_SECTOR_SIZE));
+                        memcpy(mapBuff + entry_addr, &start_sector, 4);       //copy start sector
+                        entry_addr += 4;
 
                         entries++;
                     }
@@ -714,9 +701,10 @@ unsigned int ext2_get_inode_sectors_map(struct ext2_inode *inode, unsigned char 
                 }
 
                 if (length < blocksize - shift) {
-                        sector = ext2_volume->start + (last_physical * (blocksize / EXT2_SECTOR_SIZE));
-                        sector += blocksize / 512 - 1;
-                        memcpy(mapBuff + entryAddr, &sector, 4);       //copy end sector
+                        end_sector = ext2_volume->start + (last_physical * (blocksize / EXT2_SECTOR_SIZE));
+                        end_sector += blocksize / 512 - 1;
+                        holds = end_sector - start_sector;
+                        memcpy(mapBuff + entry_addr, &holds, 4);       //copy sectors to end
 
                         return entries;
                 }
@@ -731,14 +719,15 @@ unsigned int ext2_get_inode_sectors_map(struct ext2_inode *inode, unsigned char 
                 if (physical != last_physical) {
                     change = physical - last_physical;
                     if (change > 1 || change < 0) {
-                        sector = ext2_volume->start + (last_physical * (blocksize / EXT2_SECTOR_SIZE));
-                        sector += blocksize / 512 - 1;
-                        memcpy(mapBuff + entryAddr, &sector, 4);       //copy end sector
-                        entryAddr += 4;
+                        end_sector = ext2_volume->start + (last_physical * (blocksize / EXT2_SECTOR_SIZE));
+                        end_sector += blocksize / 512 - 1;
+                        holds = end_sector - start_sector;
+                        memcpy(mapBuff + entry_addr, &holds, 4);       //copy sectors to end
+                        entry_addr += 4;
 
-                        sector = ext2_volume->start + (physical * (blocksize / EXT2_SECTOR_SIZE));
-                        memcpy(mapBuff + entryAddr, &sector, 4);       //copy start sector
-                        entryAddr += 4;
+                        start_sector = ext2_volume->start + (physical * (blocksize / EXT2_SECTOR_SIZE));
+                        memcpy(mapBuff + entry_addr, &start_sector, 4);       //copy start sector
+                        entry_addr += 4;
 
                         entries++;
                     }
@@ -746,9 +735,10 @@ unsigned int ext2_get_inode_sectors_map(struct ext2_inode *inode, unsigned char 
                 }
 
                 if (length < blocksize) {
-                        sector = ext2_volume->start + (last_physical * (blocksize / EXT2_SECTOR_SIZE));
-                        sector += blocksize / 512 - 1;
-                        memcpy(mapBuff + entryAddr, &sector, 4);       //copy end sector
+                        end_sector = ext2_volume->start + (last_physical * (blocksize / EXT2_SECTOR_SIZE));
+                        end_sector += blocksize / 512 - 1;
+                        holds = end_sector - start_sector;
+                        memcpy(mapBuff + entry_addr, &holds, 4);       //copy sectors to end
 
                         return entries;
                 }
@@ -762,9 +752,10 @@ unsigned int ext2_get_inode_sectors_map(struct ext2_inode *inode, unsigned char 
         offset += blocksize;
     }
 
-    sector = ext2_volume->start + (last_physical * (blocksize / EXT2_SECTOR_SIZE));
-    sector += blocksize / 512 - 1;
-    memcpy(mapBuff + entryAddr, &sector, 4);       //copy end sector
+    end_sector = ext2_volume->start + (last_physical * (blocksize / EXT2_SECTOR_SIZE));
+    end_sector += blocksize / 512 - 1;
+    holds = end_sector - start_sector;
+    memcpy(mapBuff + entry_addr, &holds, 4);       //copy sectors to end
 
     return entries;
 }
@@ -946,7 +937,7 @@ int ext2_fs_open(iop_file_t* fd, const char *pathname, int mode) {
 #ifndef WRITE_SUPPORT
     //read only support
     if (mode != 0 && mode != O_RDONLY) { //correct O_RDONLY  number?
-        XPRINTF("USBHDFSD: mode (%d) != O_RDONLY (%d) \n", mode, O_RDONLY);
+//        XPRINTF("USBHDFSD: mode (%d) != O_RDONLY (%d) \n", mode, O_RDONLY);
         _fs_unlock();
         return -EROFS;
     }
@@ -1205,64 +1196,173 @@ int ext2_fs_write(iop_file_t* fd, void * buffer, int size) {
 }
 
 
-//int ext2_read_file_sector_by_map(unsigned char *mapBuff, register int mapBuffLen, register unsigned int sector, unsigned char *buff) {
-//    register int entryAddr = 0;
-//    register unsigned int start_sector = 0, end_sector = 0;
-//    register unsigned int passed = 0, past_passed = 0, change;
-//    unsigned char *sbuf;
-//    register int i;
-//
-//    while (entryAddr < mapBuffLen) {
-//        start_sector = 
-//            (mapBuff + entryAddr)[0] + 
-//            ((mapBuff + entryAddr)[1] << 8) + 
-//            ((mapBuff + entryAddr)[2] << 16) + 
-//            ((mapBuff + entryAddr)[3] << 24);
-//
-//        end_sector = 
-//            (mapBuff + entryAddr + 4)[0] + 
-//            ((mapBuff + entryAddr + 4)[1] << 8) + 
-//            ((mapBuff + entryAddr + 4)[2] << 16) + 
-//            ((mapBuff + entryAddr + 4)[3] << 24);
-//
-//        if (!start_sector && !end_sector) {
-//            //should not get here if sector is correct
-//            return -1;
-//        }
-//
-//        change = end_sector - start_sector + 1;
-//        passed += change;
-//
-//        if (sector < passed) {
-////            printf("%d %d          \r", sector, start_sector + sector - past_passed);
-//
-//            READ_SECTOR(ext2_volume->dev, start_sector + sector - past_passed, sbuf);
-//            for (i = 0; i < 512; i++) {
-//                buff[i] = sbuf[i];
-//            }
-//
-//            return 1;
-//        }
-//
-//        past_passed += change;
-//
-//        entryAddr += 8;
-//    }
-//
-//    return 0;
-//}
+int ext2_pack_inode_sectors_map(unsigned char *mapBuff, int mapBuffLen, unsigned char *targetMapBuff, int targetMapBuffLen) {
+    unsigned int src_entry, src_holds, src_entry_addr = 0;
+    unsigned int src_entry2, src_holds2, src_entry_addr2 = 0;
+    unsigned int dst_entry_addr = 0;
+    unsigned int dups, tmp;
+
+
+    while (src_entry_addr < mapBuffLen) {
+        memcpy(&src_entry, mapBuff + src_entry_addr, 4);
+        memcpy(&src_holds, mapBuff + src_entry_addr + 4, 4);
+        
+        if (!src_entry || !src_holds) {
+            break;
+        }
+
+        src_entry_addr += 8;
+
+        if (dst_entry_addr > targetMapBuffLen) {
+            //file is too much fragmented
+            return -1;
+        }
+
+        memcpy(targetMapBuff + dst_entry_addr, &src_entry, 4);
+        dst_entry_addr += 4;
+
+        //check if holds are duplicated
+        dups = 0;
+        src_entry_addr2 = src_entry_addr;
+        while (src_entry_addr2 < mapBuffLen) {
+            memcpy(&src_entry2, mapBuff + src_entry_addr2, 4);
+            memcpy(&src_holds2, mapBuff + src_entry_addr2 + 4, 4);
+
+            src_entry_addr2 += 8;
+            
+            if (src_holds2 != src_holds) {
+                break;
+            }
+
+            dups++;
+        }
+        
+        if (dups > 255) {
+            //file too much fragmented
+            return -1;
+        }
+
+        if (dups == 0) {
+            //no duplicates, save holds in target array
+            memcpy(targetMapBuff + dst_entry_addr, &src_holds, 4);
+            dst_entry_addr += 4;
+        }
+        else {
+            //there are duplicates, save holds struct
+
+            /*
+             * holds struct:
+             * ABBCCCCC
+             * A - flag (8 decimal == 1000 binary, or 0 is not holds struct)
+             * B - count duplicates/dups
+             * C - holds
+             */
+            tmp = 0x80000000 | dups << 20 | src_holds;
+            memcpy(targetMapBuff + dst_entry_addr, &tmp, 4);
+            dst_entry_addr += 4;
+
+            //..and add each sector
+            while (dups > 0) {
+                memcpy(&src_entry, mapBuff + src_entry_addr, 4);
+                memcpy(&src_holds, mapBuff + src_entry_addr + 4, 4);
+                
+                if (!src_entry || !src_holds) {
+                    break;
+                }
+
+                src_entry_addr += 8;
+
+                memcpy(targetMapBuff + dst_entry_addr, &src_entry, 4);
+                dst_entry_addr += 4;
+
+                dups--;
+            }
+
+            if (!src_entry || !src_holds) {
+                break;
+            }
+        }
+    }
+
+    if (!dst_entry_addr) {
+        return 0;
+    }
+
+    return dst_entry_addr / 4;
+}
+
+
+int ext2_read_file_sector_by_map(unsigned char *mapBuff, register int mapBuffLen, register unsigned int sector, unsigned char *buff) {
+    register int entry_addr = 0;
+    register unsigned int start_sector = 0, holds = 0, same_holds = 0;
+    register unsigned int passed = 0, past_passed = 0;
+    unsigned char *sbuf;
+    register int i;
+
+    while (entry_addr < mapBuffLen) {
+        start_sector = 
+            (mapBuff + entry_addr)[0] + 
+            ((mapBuff + entry_addr)[1] << 8) + 
+            ((mapBuff + entry_addr)[2] << 16) + 
+            ((mapBuff + entry_addr)[3] << 24);
+        entry_addr += 4;
+
+        if (same_holds == 0) {
+            holds = 
+                (mapBuff + entry_addr)[0] + 
+                ((mapBuff + entry_addr)[1] << 8) + 
+                ((mapBuff + entry_addr)[2] << 16) + 
+                ((mapBuff + entry_addr)[3] << 24);
+            entry_addr += 4;
+            
+            if (holds > 0 && (holds & 0x80000000) == 0 && holds % 2 != 0) {
+                holds++;
+            }
+        }
+        else {
+            same_holds--;
+        }
+
+        if (!start_sector || !holds) {
+            //should not get here if sector is correct
+            return -1;
+        }
+
+        if ((holds & 0x80000000) != 0) {
+            same_holds = (holds & 0x0FF00000) >> 20;
+            holds = (holds & 0x000FFFFF) + 1;
+        }
+
+        passed += holds;
+
+        if (sector < passed) {
+            READ_SECTOR(ext2_volume->dev, start_sector + sector - past_passed, sbuf);
+            for (i = 0; i < 512; i++) {
+                buff[i] = sbuf[i];
+            }
+
+            return 1;
+        }
+
+        past_passed += holds;
+    }
+
+    return 0;
+}
 
 
 int ext2_fs_ioctl(iop_file_t *fd, unsigned long request, void *data) {
     struct ext2_inode *inode;
     unsigned int physical;
     int ret = ext2_fs_dummy();
-    unsigned int entryAddr = 0, entries;
+    unsigned int entry_addr = 0;
+    int entries;
+    unsigned char *ext2_tmp_file_sectors;
 //    long long offset = 0, real_size;
 //    unsigned char secBuff1[512];
 //    unsigned char secBuff2[512];
 //    unsigned int last_start_sector = -1, start_sector;
-//    unsigned int end_sector, max;
+//    unsigned int end_sector, max, holds;
 //    unsigned int secNo = 0;
 
     //printf("* ext2_fs_ioctl request: %lu\n", request);
@@ -1339,7 +1439,15 @@ int ext2_fs_ioctl(iop_file_t *fd, unsigned long request, void *data) {
                 return -1;
             }
 
-            if ((entries = ext2_get_inode_sectors_map(inode, ext2_file_sectors, EXT2_SECTORS_BYTES)) < 0) {
+            ext2_tmp_file_sectors = malloc(EXT2_TMP_SECTORS_BYTES);
+            if (!ext2_tmp_file_sectors) {
+                _fs_unlock();
+                free(inode);
+                return 0xffffffff;
+            }
+            memset(ext2_tmp_file_sectors, 0, EXT2_TMP_SECTORS_BYTES);
+            
+            if ((entries = ext2_get_inode_sectors_map(inode, ext2_tmp_file_sectors, EXT2_TMP_SECTORS_BYTES)) < 0) {
                 //file is too much fragmented - error
                 _fs_unlock();
                 free(inode);
@@ -1351,42 +1459,103 @@ int ext2_fs_ioctl(iop_file_t *fd, unsigned long request, void *data) {
                 return -1;
             }
 
-            //check if all start sectors are consecutive
-            //if not - error, we will implement support for non-consecutive
-            //sectors later
-//            max = 0;
+
+//            entry_addr = 0;
 //            while (entries > 0) {
-//                memcpy(&start_sector, ext2_file_sectors + entryAddr, 4);
-//                memcpy(&end_sector, ext2_file_sectors + entryAddr + 4, 4);
-//                if (last_start_sector == -1) {
-//                    //first iteration
-//                    last_start_sector = start_sector;
-//                }
+//                memcpy(&start_sector, ext2_tmp_file_sectors + entry_addr, 4);
+//                memcpy(&end_sector, ext2_tmp_file_sectors + entry_addr + 4, 4);
+//                printf("%d - %d\n", start_sector, end_sector);
 //
-//                printf("%d, %d (%d, %d)\n", start_sector, end_sector, end_sector - start_sector + 1, max);
-//                max += end_sector - start_sector + 1;
-//
-//                if (start_sector < last_start_sector) {
-//                    printf("bbbbbbbbbbbbbbbbbbbbbbb\n");
-//                    _fs_unlock();
-//                    free(inode);
-//                    return 0xffffffff;
-//                }
-//
-//                entryAddr += 8;
+//                entry_addr += 8;
 //                entries--;
 //            }
-
-            /*
-            while (entries > 0) {
-                memcpy(&start_sector, ext2_file_sectors + entryAddr, 4);
-                memcpy(&end_sector, ext2_file_sectors + entryAddr + 4, 4);
-                printf("%d %d (%d)\n", start_sector, end_sector, end_sector - start_sector);
-
-                entryAddr += 8;
-                entries--;
+//
+//            printf("\n");
+            
+            ext2_file_sectors = malloc(EXT2_SECTORS_BYTES);
+            if (!ext2_file_sectors) {
+                _fs_unlock();
+                free(inode);
+                free(ext2_tmp_file_sectors);
+                return 0xffffffff;
             }
-*/
+            memset(ext2_file_sectors, 0, EXT2_SECTORS_BYTES);
+
+
+            if ((entries = ext2_pack_inode_sectors_map(ext2_tmp_file_sectors, EXT2_TMP_SECTORS_BYTES, ext2_file_sectors, EXT2_SECTORS_BYTES)) < 0) {
+                //file is too much fragmented - error
+                _fs_unlock();
+                free(inode);
+                free(ext2_tmp_file_sectors);
+                free(ext2_file_sectors);
+                return 0xffffffff;
+            }
+
+            free(ext2_tmp_file_sectors);
+
+            if (entries < 0) {
+                _fs_unlock();
+                free(inode);
+                free(ext2_file_sectors);
+                return 0xffffffff;
+            }
+
+//            printf("entries: %d\n", entries);
+//            entry_addr = 0;
+//            while (entries > 0) {
+//                memcpy(&start_sector, ext2_file_sectors + entry_addr, 4);
+//                
+//                if ((start_sector & 0x80000000) != 0) {
+//                    //holds struct
+//                    printf("0x%X\n", start_sector);
+//                }
+//                else {
+//                    printf("%d\n", start_sector);
+//                }
+//
+//                entry_addr += 4;
+//                entries--;
+//            }
+//            printf("\n");
+
+            
+            
+//            if ((entries = ext2_pack_inode_sectors_map(inode, ext2_file_sectors, EXT2_SECTORS_BYTES, packed_sectors)) < 0) {
+//                //file is too much fragmented - error
+//                _fs_unlock();
+//                free(inode);
+//                return 0xffffffff;
+//            }
+
+
+//            while(1){}
+
+//            real_size = ((unsigned long long)inode->i_dir_acl << 32) | inode->i_size;
+//            secNo = 0;
+//            while (offset < real_size) {
+//                printf("%d\r", secNo);
+//
+//                if (ext2_read_data(inode, secNo * 512, secBuff1, 512) < 512) {
+//                    break;
+//                }
+//                ext2_read_file_sector_by_packed_map(ext2_file_sectors, EXT2_SECTORS_BYTES, secNo, secBuff2);
+//
+//                if (memcmp(secBuff1, secBuff2, 512)) {
+//                    printf("\n%d err\n", secNo);
+//                    print_hex_memory(secBuff1, 512);
+//                    print_hex_memory(secBuff2, 512);
+//                    break;
+//                }
+//                
+////                if (secNo >= 1000000) {
+////                    printf("limit\n");
+////                    break;
+////                }
+//                
+//                secNo++;
+//                offset = secNo * 512;
+//            }
+//            printf("\nok\n");
 //            while(1){}
 
 //            real_size = ((unsigned long long)inode->i_dir_acl << 32) | inode->i_size;
@@ -1416,8 +1585,13 @@ int ext2_fs_ioctl(iop_file_t *fd, unsigned long request, void *data) {
             free(inode);
         }
 
-        entryAddr = request & 0x0000FFFF;
-        memcpy(&ret, ext2_file_sectors + entryAddr, 4);
+        entry_addr = request & 0x0000FFFF;
+        memcpy(&ret, ext2_file_sectors + entry_addr, 4);
+        
+        if (entry_addr + 4 >= EXT2_SECTORS_BYTES) {
+            //last hit, release memory
+            free(ext2_file_sectors);
+        }
     }
 
     //printf("* ext2_fs_ioctl success request: %lu\n", request);

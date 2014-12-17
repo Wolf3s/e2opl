@@ -20,6 +20,7 @@ typedef u32 uint32_t;
 
 
 #define EXT2_SECTORS_BYTES 512
+#define EXT2_TMP_SECTORS_BYTES 1024
 #define EXT2_SECTOR_SIZE 512
 #define READ_SECTOR(d, a, b)	scache_readSector((d)->cache, (a), (void **)&b)
 
