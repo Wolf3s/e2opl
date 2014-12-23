@@ -42,8 +42,9 @@ static base_game_info_t *usbGames;
 // forward declaration
 static item_list_t usbGameList;
 
-
 //s0ck3t
+#define IOCTL_SECTORS_MAP_START 0x13370000
+#define IOCTL_DEVID 0x13370201
 #define EXT2_SECTORS_BYTES 512
 
 static unsigned char ext2_file_sectors[52] = {  //52 instead of EXT2_SECTORS_BYTES..
@@ -233,6 +234,7 @@ static void usbLaunchGame(int id, config_set_t* configSet) {
         //s0ck3t
         int j, n;
         unsigned int sector;
+        unsigned char tmpByte;
         void *part_addr = NULL;
 
 	fd = fioDopen(usbPrefix);
@@ -342,7 +344,7 @@ static void usbLaunchGame(int id, config_set_t* configSet) {
                     //sectors
                     n = 0;
                     while (n < EXT2_SECTORS_BYTES) {
-                        sector = fioIoctl(fd, 0x13370000 | n, partname);
+                        sector = fioIoctl(fd, IOCTL_SECTORS_MAP_START | n, partname);
                         if (sector == 0xffffffff) {
                             fioDclose(fd);
                             guiMsgBox(_l(_STR_ERR_FRAGMENTED), 0, NULL);
@@ -357,6 +359,12 @@ static void usbLaunchGame(int id, config_set_t* configSet) {
 
                         n += 4;
                     }
+                    
+                    //set ext2_devId
+                    //it's located directly after
+                    //512 bytes ext2_file_sectors array
+                    tmpByte = (unsigned char)fioIoctl(fd, IOCTL_DEVID, partname);
+                    memcpy((void*)((u32)irx + j + EXT2_SECTORS_BYTES), &tmpByte, 1);
 
                     //reset part_addr, we will not use it when ext2
                     val = 0;

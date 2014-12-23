@@ -10,10 +10,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/sng/e2opl-code/modules/iopcore/cdvdman/mass_driver.c</file>
-            <file>file:/home/sng/e2opl-code/src/usbsupport.c</file>
+            <file>file:/home/sng/e2opl-code/modules/usb/usbhdfsd/part_driver.c</file>
             <file>file:/home/sng/e2opl-code/modules/usb/usbhdfsd/ext2fs.c</file>
-            <file>file:/home/sng/e2opl-code/modules/usb/usbhdfsd/ext2fs.h</file>
+            <file>file:/home/sng/e2opl-code/modules/usb/usbhdfsd/usbhdfsd.c</file>
+            <file>file:/home/sng/e2opl-code/modules/usb/usbhdfsd/part_driver.h</file>
+            <file>file:/home/sng/e2opl-code/modules/usb/usbhdfsd/fs_driver.c</file>
         </group>
     </open-files>
 </project-private>

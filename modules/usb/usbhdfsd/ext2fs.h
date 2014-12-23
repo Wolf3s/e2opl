@@ -17,6 +17,8 @@ typedef u32 uint32_t;
 #define IOCTL_GETCLUSTER 0xBEEFC0DE        //jimmikaelkael: Ioctl request code => get file start cluster
 #define IOCTL_GETDEVSECTORSIZE 0xDEADC0DE  //jimmikaelkael: Ioctl request code => get mass storage device sector size
 #define IOCTL_CHECKCHAIN 0xCAFEC0DE  //polo: Ioctl request code => Check cluster chain
+#define IOCTL_SECTORS_MAP_START 0x13370000
+#define IOCTL_DEVID 0x13370201
 
 
 #define EXT2_SECTORS_BYTES 512

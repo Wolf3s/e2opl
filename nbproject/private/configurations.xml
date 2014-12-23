@@ -9,20 +9,33 @@
         <in>R2_icon.s</in>
         <in>alt_ee_core.s</in>
         <in>app_icon.s</in>
+        <in>cddev.s</in>
+        <in>cdvdfsv.s</in>
         <in>circle_icon.s</in>
         <in>cross_icon.s</in>
+        <in>discid.s</in>
         <in>down_icon.s</in>
         <in>ee_core.s</in>
         <in>eesync.s</in>
         <in>elfldr.s</in>
         <in>eth_icon.s</in>
+        <in>filexio.s</in>
         <in>freesans.s</in>
+        <in>genvmc.s</in>
+        <in>hdd_cdvdman.s</in>
+        <in>hdd_hdpro_cdvdman.s</in>
         <in>hdd_icon.s</in>
+        <in>hdd_pcmcia_cdvdman.s</in>
+        <in>hdldsvr.s</in>
+        <in>hdpro_atad.s</in>
         <in>icon_icn.s</in>
         <in>icon_sys.s</in>
         <in>icon_sys_A.s</in>
         <in>icon_sys_J.s</in>
         <in>imgdrv.s</in>
+        <in>ingame_smstcpip.s</in>
+        <in>iomanx.s</in>
+        <in>ioptrap.s</in>
         <in>left_icon.s</in>
         <in>load0.s</in>
         <in>load1.s</in>
@@ -33,16 +46,32 @@
         <in>load6.s</in>
         <in>load7.s</in>
         <in>logo.s</in>
+        <in>poweroff.s</in>
+        <in>ps2atad.s</in>
+        <in>ps2dev9.s</in>
+        <in>ps2fs.s</in>
+        <in>ps2hdd.s</in>
+        <in>ps2link.s</in>
         <in>right_icon.s</in>
         <in>select_icon.s</in>
+        <in>smap.s</in>
+        <in>smap_ingame.s</in>
         <in>smb_cdvdman.s</in>
+        <in>smb_pcmcia_cdvdman.s</in>
+        <in>smbman.s</in>
+        <in>smstcpip.s</in>
+        <in>smsutils.s</in>
         <in>square_icon.s</in>
         <in>start_icon.s</in>
         <in>triangle_icon.s</in>
+        <in>udptty.s</in>
         <in>up_icon.s</in>
         <in>usb_4Ksectors_cdvdman.s</in>
         <in>usb_cdvdman.s</in>
         <in>usb_icon.s</in>
+        <in>usbd_ps2.s</in>
+        <in>usbd_ps3.s</in>
+        <in>usbhdfsd.s</in>
       </df>
       <df name="branches">
       </df>

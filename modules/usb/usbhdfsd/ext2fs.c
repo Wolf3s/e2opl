@@ -1416,10 +1416,13 @@ int ext2_fs_ioctl(iop_file_t *fd, unsigned long request, void *data) {
             ret = 1;    //by default not fragmented 
             //because ext2 driver will handle fragmentation
             break;
+        case IOCTL_DEVID:
+            ret = ext2_volume->dev->devId;
+            break;
     }
 
-    if (ret < 0 && request >= 0x13370000 && request <= (0x13370000 | EXT2_SECTORS_BYTES)) {
-        if (request == 0x13370000) {
+    if (ret < 0 && request >= IOCTL_SECTORS_MAP_START && request <= (IOCTL_SECTORS_MAP_START | EXT2_SECTORS_BYTES)) {
+        if (request == IOCTL_SECTORS_MAP_START) {
             //first time - read sectors, this will take a while
             inode = (struct ext2_inode*)malloc(sizeof(struct ext2_inode));
             if (inode == NULL) {
@@ -1587,7 +1590,7 @@ int ext2_fs_ioctl(iop_file_t *fd, unsigned long request, void *data) {
 
         entry_addr = request & 0x0000FFFF;
         memcpy(&ret, ext2_file_sectors + entry_addr, 4);
-        
+
         if (entry_addr + 4 >= EXT2_SECTORS_BYTES) {
             //last hit, release memory
             free(ext2_file_sectors);

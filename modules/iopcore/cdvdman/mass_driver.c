@@ -35,6 +35,7 @@ static unsigned char ext2_file_sectors[EXT2_SECTORS_BYTES] = {
     0xcc, 0xcc, 0xbb, 0xbb,
     0xaa, 0xaa, 0xff, 0xff
 };
+static unsigned char ext2_devId = 0xFF;
 
 extern int *p_part_start;
 
@@ -861,6 +862,11 @@ int mass_stor_probe(int devId)
 	XPRINTF("mass_driver: probe: devId=%i\n", devId);
 
 	mass_dev* mass_device = &g_mass_device;
+
+        //s0ck3t
+        if (ext2_devId != 0xFF && devId != ext2_devId) {
+            return 0;
+        }
 
 	/* only one device supported */
 	if (mass_device->status & DEVICE_DETECTED) {
