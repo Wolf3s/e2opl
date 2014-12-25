@@ -187,7 +187,7 @@ void guiShowAbout() {
 	char OPLVersion[64];
         //s0ck3t
 //        snprintf(OPLVersion, 64, _l(_STR_OUL_VER), USBLD_VERSION);
-	snprintf(OPLVersion, 64, _l(_STR_OUL_VER), EUSBLD_VERSION, USBLD_VERSION);
+	snprintf(OPLVersion, 64, _l(_STR_OUL_VER), E2USBLD_VERSION, USBLD_VERSION);
 
 #ifdef VMC
 	strcat(OPLVersion, " VMC");

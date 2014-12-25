@@ -34,7 +34,7 @@
 #define USBLD_VERSION "0.9.2"
 
 //s0ck3t
-#define EUSBLD_VERSION "0.1"
+#define E2USBLD_VERSION "0.1"
 
 #define IO_MENU_UPDATE_DEFFERED 2
 

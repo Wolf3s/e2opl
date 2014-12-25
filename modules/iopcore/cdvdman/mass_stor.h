@@ -29,7 +29,4 @@ int mass_stor_writeSector(unsigned int lba, int nsectors, unsigned char* buffer)
 int mass_stor_configureDevice(void);
 int mass_stor_ReadCD(unsigned int lsn, unsigned int nsectors, void *buf, int part_num);
 
-//s0ck3t
-void * AllocSysMemory(int mode, int size, void *ptr);
-
 #endif

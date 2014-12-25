@@ -66,29 +66,6 @@ extern int *p_part_start;
 #define CBW_TAG 0x43425355
 #define CSW_TAG 0x53425355
 
-//s0ck3t
-/* from linux/stat.h */
-/* same as in ps2sdk/common/include/sys/stat.h */
-
-#ifndef S_IFMT
-#define S_IFMT  00170000
-#endif
-
-#define S_IFSOCK 0140000
-#define S_IFLNK	 0120000
-#define S_IFREG  0100000
-#define S_IFBLK  0060000
-#define S_IFDIR  0040000
-#define S_IFCHR  0020000
-#define S_IFIFO  0010000
-#define S_ISUID  0004000
-#define S_ISGID  0002000
-#define S_ISVTX  0001000
-
-#ifndef S_ISLNK
-#define S_ISLNK(m)	(((m) & S_IFMT) == S_IFLNK)
-#endif
-
 typedef struct _cbw_packet
 {
 	unsigned int signature;
