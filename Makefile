@@ -139,7 +139,9 @@ clean:  sclean
 sclean:
 	echo "Cleaning..."
 	echo "    * Interface"
-	rm -f -r $(MAPFILE) $(EE_BIN) $(EE_BIN_PKD) $(EE_OBJS_DIR) $(EE_ASM_DIR)
+	#s0ck3t
+	#rm -f -r $(MAPFILE) $(EE_BIN) $(EE_BIN_PKD) $(EE_OBJS_DIR) $(EE_ASM_DIR)
+	rm -f -r $(MAPFILE) $(EE_OBJS_DIR) $(EE_ASM_DIR)
 	echo "    * EE core"
 	$(MAKE) -C ee_core clean
 	$(MAKE) -C ee_core -f Makefile.alt clean

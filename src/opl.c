@@ -865,9 +865,9 @@ static void setDefaults(void) {
 	gDisableDebug = 0;
 	gEnableDandR = 0;
 	gRememberLastPlayed = 0;
-        
-        //s0ck3t
-        gCoverLoadFrames = 100;
+
+        //s0ck3t - todo - check on other consoles
+        gCoverLoadFrames = 50;
 
 #ifdef GSM
 	gShowGSM = 0;
