@@ -211,7 +211,11 @@ void ethInit(void) {
 		memset(ethModifiedDVDPrev, 0, 8);
 		ethGameCount = 0;
 		ethGames = NULL;
-		configGetInt(configGetByType(CONFIG_OPL), "eth_frames_delay", &ethGameList.delay);
+                //s0ck3t
+//                configGetInt(configGetByType(CONFIG_OPL), "eth_frames_delay", &ethGameList.delay);
+                if (!configGetInt(configGetByType(CONFIG_OPL), "eth_frames_delay", &ethGameList.delay)) {
+                    ethGameList.delay = gCoverLoadFrames;
+                }
 		gNetworkStartup = ERROR_ETH_NOT_STARTED;
 		ioPutRequest(IO_CUSTOM_SIMPLEACTION, &ethLoadModules);
 		ethGameList.enabled = 1;

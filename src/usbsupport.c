@@ -146,7 +146,12 @@ void usbInit(void) {
 	memset(usbModifiedDVDPrev, 0, 8);
 	usbGameCount = 0;
 	usbGames = NULL;
-	configGetInt(configGetByType(CONFIG_OPL), "usb_frames_delay", &usbGameList.delay);
+        //s0ck3t
+//	configGetInt(configGetByType(CONFIG_OPL), "usb_frames_delay", &usbGameList.delay);
+        if (!configGetInt(configGetByType(CONFIG_OPL), "usb_frames_delay", &usbGameList.delay)) {
+            usbGameList.delay = gCoverLoadFrames;
+        }
+        
 	ioPutRequest(IO_CUSTOM_SIMPLEACTION, &usbInitModules);
 	usbGameList.enabled = 1;
 }

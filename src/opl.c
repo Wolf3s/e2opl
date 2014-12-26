@@ -469,11 +469,6 @@ static void _loadConfig() {
 		if (result & CONFIG_OPL) {
 			config_set_t *configOPL = configGetByType(CONFIG_OPL);
 			const char *temp;
-                        
-                        //s0ck3t
-                        configSetInt(configOPL, "usb_frames_delay", gCoverLoadFrames);
-                        configSetInt(configOPL, "hdd_frames_delay", gCoverLoadFrames);
-                        configSetInt(configOPL, "eth_frames_delay", gCoverLoadFrames);
 
 			configGetInt(configOPL, "scrolling", &gScrollSpeed);
 			configGetColor(configOPL, "bg_color", gDefaultBgColor);
@@ -588,7 +583,7 @@ static void _saveConfig() {
 		configSetInt(configOPL, "usb_delay", gUSBDelay);
 		configSetStr(configOPL, "usb_prefix", gUSBPrefix);
 		configSetStr(configOPL, "eth_prefix", gETHPrefix);
-		configSetInt(configOPL, "remember_last", gRememberLastPlayed);
+		configSetInt(configOPL, "remember_last", gRememberLastPlayed);                
 #ifdef GSM
 		configSetInt(configOPL, "show_gsm", gShowGSM);
 #endif
@@ -859,14 +854,16 @@ static void setDefaults(void) {
 	gIPConfigChanged = 0;
 	gScrollSpeed = 1;
 	strncpy(gExitPath, "", 32);
-	gDefaultDevice = APP_MODE;
+        //s0ck3t - usb by default
+//	gDefaultDevice = APP_MODE;
+        gDefaultDevice = USB_MODE;
 	gAutosort = 1;
 	gAutoRefresh = 0;
 	gDisableDebug = 0;
 	gEnableDandR = 0;
 	gRememberLastPlayed = 0;
 
-        //s0ck3t - todo - check on other consoles
+        //s0ck3t
         gCoverLoadFrames = 50;
 
 #ifdef GSM
@@ -877,10 +874,14 @@ static void setDefaults(void) {
 	strncpy(gUSBPrefix, "", 32);
 	strncpy(gETHPrefix, "", 32);
 	gUseInfoScreen = 0;
-	gEnableArt = 0;
+        //s0ck3t - enable Cover ART by default
+//        gEnableArt = 0;
+        gEnableArt = 1;
 	gWideScreen = 0;
 
-	gUSBStartMode = 0;
+        //s0ck3t - auto for usb support
+//	gUSBStartMode = 0;
+        gUSBStartMode = 2;
 	gHDDStartMode = 0;
 	gETHStartMode = 0;
 	gAPPStartMode = 0;

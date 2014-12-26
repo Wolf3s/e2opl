@@ -35,9 +35,7 @@ int getModInfo(u8 *modname, modinfo_t *info);
 /* MASS Transfer Imports */
 #ifdef USB_DRIVER
 
-//s0ck3t
-int mass_stor_readSector(unsigned int lba, int nsectors, unsigned char* buffer, int start);
-//int mass_stor_readSector(unsigned int lba, int nsectors, unsigned char* buffer);
+int mass_stor_readSector(unsigned int lba, int nsectors, unsigned char* buffer);
 #define I_mass_stor_readSector DECLARE_IMPORT(5, mass_stor_readSector)
 
 int mass_stor_writeSector(unsigned int lba, int nsectors, unsigned char* buffer);
