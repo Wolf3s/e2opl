@@ -1211,6 +1211,11 @@ int ext2_pack_inode_sectors_map(unsigned char *mapBuff, int mapBuffLen, unsigned
             break;
         }
 
+        if (src_holds > 0xFFFFF) {
+            //file is too much fragmented
+            return -1;
+        }
+
         src_entry_addr += 8;
 
         if (dst_entry_addr > targetMapBuffLen) {
@@ -1268,6 +1273,11 @@ int ext2_pack_inode_sectors_map(unsigned char *mapBuff, int mapBuffLen, unsigned
                 
                 if (!src_entry || !src_holds) {
                     break;
+                }
+
+                if (src_holds > 0xFFFFF) {
+                    //file is too much fragmented
+                    return -1;
                 }
 
                 src_entry_addr += 8;
