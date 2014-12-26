@@ -864,7 +864,7 @@ static void setDefaults(void) {
 	gRememberLastPlayed = 0;
 
         //s0ck3t
-        gCoverLoadFrames = 50;
+        gCoverLoadFrames = 30;
 
 #ifdef GSM
 	gShowGSM = 0;
