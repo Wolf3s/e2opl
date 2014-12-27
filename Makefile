@@ -34,8 +34,8 @@ ifeq ($(VMC),1)
 EECORE_OBJS += obj/usb_mcemu.o obj/hdd_mcemu.o obj/smb_mcemu.o 
 endif
 
-EE_BIN = E2OPL.ELF
-EE_BIN_PKD = E2OPLP.ELF
+EE_BIN = OPL.ELF
+EE_BIN_PKD = OPNPS2LD.ELF
 EE_SRC_DIR = src/
 EE_OBJS_DIR = obj/
 EE_ASM_DIR = asm/
