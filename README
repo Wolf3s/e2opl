@@ -89,6 +89,7 @@ Changelog:
 - fix for more than one USB device (only for EXT2)
 - skip intro
 - USB device is default
+- fix for Addonics NAS 3.0 Adapter (NAS30U2)
 
 ---
 SMB
