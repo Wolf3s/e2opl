@@ -1,0 +1,582 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="94">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <df root="." name="0">
+      <df name="asm">
+        <in>L1_icon.s</in>
+        <in>L2_icon.s</in>
+        <in>R1_icon.s</in>
+        <in>R2_icon.s</in>
+        <in>alt_ee_core.s</in>
+        <in>app_icon.s</in>
+        <in>cddev.s</in>
+        <in>cdvdfsv.s</in>
+        <in>circle_icon.s</in>
+        <in>cross_icon.s</in>
+        <in>discid.s</in>
+        <in>down_icon.s</in>
+        <in>ee_core.s</in>
+        <in>eesync.s</in>
+        <in>elfldr.s</in>
+        <in>eth_icon.s</in>
+        <in>filexio.s</in>
+        <in>freesans.s</in>
+        <in>genvmc.s</in>
+        <in>hdd_cdvdman.s</in>
+        <in>hdd_hdpro_cdvdman.s</in>
+        <in>hdd_icon.s</in>
+        <in>hdd_pcmcia_cdvdman.s</in>
+        <in>hdldsvr.s</in>
+        <in>hdpro_atad.s</in>
+        <in>icon_icn.s</in>
+        <in>icon_sys.s</in>
+        <in>icon_sys_A.s</in>
+        <in>icon_sys_J.s</in>
+        <in>imgdrv.s</in>
+        <in>ingame_smstcpip.s</in>
+        <in>iomanx.s</in>
+        <in>ioptrap.s</in>
+        <in>left_icon.s</in>
+        <in>load0.s</in>
+        <in>load1.s</in>
+        <in>load2.s</in>
+        <in>load3.s</in>
+        <in>load4.s</in>
+        <in>load5.s</in>
+        <in>load6.s</in>
+        <in>load7.s</in>
+        <in>logo.s</in>
+        <in>poweroff.s</in>
+        <in>ps2atad.s</in>
+        <in>ps2dev9.s</in>
+        <in>ps2fs.s</in>
+        <in>ps2hdd.s</in>
+        <in>ps2link.s</in>
+        <in>right_icon.s</in>
+        <in>select_icon.s</in>
+        <in>smap.s</in>
+        <in>smap_ingame.s</in>
+        <in>smb_cdvdman.s</in>
+        <in>smb_pcmcia_cdvdman.s</in>
+        <in>smbman.s</in>
+        <in>smstcpip.s</in>
+        <in>smsutils.s</in>
+        <in>square_icon.s</in>
+        <in>start_icon.s</in>
+        <in>triangle_icon.s</in>
+        <in>udptty.s</in>
+        <in>up_icon.s</in>
+        <in>usb_4Ksectors_cdvdman.s</in>
+        <in>usb_cdvdman.s</in>
+        <in>usb_icon.s</in>
+        <in>usbd_ps2.s</in>
+        <in>usbd_ps3.s</in>
+        <in>usbhdfsd.s</in>
+      </df>
+      <df name="branches">
+      </df>
+      <df name="ee_core">
+        <df name="include">
+          <in>asm.h</in>
+          <in>des.h</in>
+          <in>ee_core.h</in>
+          <in>gsm_api.h</in>
+          <in>iopmgr.h</in>
+          <in>md4.h</in>
+          <in>modmgr.h</in>
+          <in>padhook.h</in>
+          <in>padpatterns.h</in>
+          <in>patches.h</in>
+          <in>smbauth.h</in>
+          <in>spu.h</in>
+          <in>syshook.h</in>
+          <in>tlb.h</in>
+          <in>util.h</in>
+        </df>
+        <df name="obj">
+        </df>
+        <df name="src">
+          <in>asm.S</in>
+          <in>crt0.s</in>
+          <in>des.c</in>
+          <in>gsm_api.c</in>
+          <in>gsm_engine.S</in>
+          <in>iopmgr.c</in>
+          <in>main.c</in>
+          <in>md4.c</in>
+          <in>modmgr.c</in>
+          <in>padhook.c</in>
+          <in>patches.c</in>
+          <in>smbauth.c</in>
+          <in>spu.c</in>
+          <in>syshook.c</in>
+          <in>tlb.c</in>
+          <in>util.c</in>
+        </df>
+      </df>
+      <df name="elfldr">
+        <in>crt0.s</in>
+        <in>elfldr.c</in>
+      </df>
+      <df name="gfx">
+      </df>
+      <df name="include">
+        <in>OSDHistory.h</in>
+        <in>appsupport.h</in>
+        <in>atlas.h</in>
+        <in>config.h</in>
+        <in>debug.h</in>
+        <in>dia.h</in>
+        <in>dialogs.h</in>
+        <in>ethsupport.h</in>
+        <in>fntsys.h</in>
+        <in>gui.h</in>
+        <in>hddsupport.h</in>
+        <in>integers.h</in>
+        <in>ioman.h</in>
+        <in>iosupport.h</in>
+        <in>lang.h</in>
+        <in>mcemu.h</in>
+        <in>menusys.h</in>
+        <in>pad.h</in>
+        <in>renderman.h</in>
+        <in>supportbase.h</in>
+        <in>system.h</in>
+        <in>texcache.h</in>
+        <in>textures.h</in>
+        <in>themes.h</in>
+        <in>usbld.h</in>
+        <in>usbsupport.h</in>
+        <in>utf8.h</in>
+        <in>util.h</in>
+      </df>
+      <df name="labs">
+        <df name="genvmclab">
+          <in>genvmclab.c</in>
+        </df>
+        <df name="hdldsvrlab">
+          <in>hdldsvrlab.c</in>
+        </df>
+        <df name="lanlab">
+          <in>lanlab.c</in>
+        </df>
+        <df name="smblab">
+          <in>smblab.c</in>
+        </df>
+      </df>
+      <df name="lng">
+      </df>
+      <df name="misc">
+      </df>
+      <df name="modules">
+        <df name="cdvd">
+          <df name="discID">
+            <in>discID.c</in>
+            <in>irx_imports.h</in>
+          </df>
+        </df>
+        <df name="debug">
+          <df name="ioptrap">
+            <in>breakpoint.c</in>
+            <in>handler.s</in>
+            <in>ioptrap.c</in>
+            <in>ioptrap.h</in>
+            <in>irx_imports.h</in>
+          </df>
+          <df name="ps2link">
+            <in>cmdHandler.c</in>
+            <in>excepHandler.c</in>
+            <in>excepHandler.h</in>
+            <in>hostlink.h</in>
+            <in>iop_ps2dev9.s</in>
+            <in>irx_imports.h</in>
+            <in>net_fio.c</in>
+            <in>net_fio.h</in>
+            <in>net_fsys.c</in>
+            <in>nprintf.c</in>
+            <in>ps2link.c</in>
+          </df>
+          <df name="udptty">
+            <in>intrman_add.h</in>
+            <in>irx_imports.h</in>
+            <in>udptty.c</in>
+          </df>
+        </df>
+        <df name="dev9">
+          <in>dev9.h</in>
+          <in>ioman_add.h</in>
+          <in>irx_imports.h</in>
+          <in>ps2dev9.c</in>
+        </df>
+        <df name="hdd">
+          <df name="atad">
+            <in>atad.h</in>
+            <in>irx_imports.h</in>
+            <in>ps2atad.c</in>
+          </df>
+          <df name="hdldsvr">
+            <in>hdldsvr.c</in>
+            <in>irx_imports.h</in>
+            <in>smsutils.h</in>
+          </df>
+          <df name="hdpro_atad">
+            <in>hdproatad.c</in>
+            <in>irx_imports.h</in>
+          </df>
+          <df name="ps2hdd">
+            <in>apa.c</in>
+            <in>apa.h</in>
+            <in>atad.h</in>
+            <in>cache.c</in>
+            <in>cache.h</in>
+            <in>hdd.c</in>
+            <in>hdd.h</in>
+            <in>hdd_fio.c</in>
+            <in>hdd_fio.h</in>
+            <in>helper.h</in>
+            <in>irx_imports.h</in>
+            <in>journal.c</in>
+            <in>journal.h</in>
+            <in>misc.c</in>
+            <in>misc.h</in>
+          </df>
+        </df>
+        <df name="iopcore">
+          <df name="cddev">
+            <in>cddev.c</in>
+            <in>irx_imports.h</in>
+          </df>
+          <df name="cdvdfsv">
+            <in>cdvdfsv.c</in>
+            <in>ext2fs.c</in>
+            <in>ext2fs.h</in>
+            <in>irx_imports.h</in>
+            <in>smsutils.h</in>
+          </df>
+          <df name="cdvdman">
+            <in>atad.c</in>
+            <in>atad.h</in>
+            <in>cdvdman.c</in>
+            <in>dev9.c</in>
+            <in>dev9.h</in>
+            <in>hdpro_atad.c</in>
+            <in>ioman_add.h</in>
+            <in>ioplib_util.c</in>
+            <in>ioplib_util.h</in>
+            <in>irx_imports.h</in>
+            <in>mass_common.h</in>
+            <in>mass_debug.h</in>
+            <in>mass_driver.c</in>
+            <in>mass_stor.h</in>
+            <in>smb.c</in>
+            <in>smb.h</in>
+            <in>smsutils.h</in>
+            <in>smsutils.s</in>
+            <in>usbd_macro.h</in>
+          </df>
+          <df name="eesync">
+            <in>eesync.c</in>
+            <in>irx_imports.h</in>
+            <in>loadcore_add.h</in>
+          </df>
+          <df name="imgdrv">
+            <in>imgdrv.c</in>
+            <in>irx_imports.h</in>
+          </df>
+        </df>
+        <df name="mcemu">
+          <in>ioman_add.h</in>
+          <in>irx_imports.h</in>
+          <in>mcemu.c</in>
+          <in>mcemu.h</in>
+          <in>mcemu_io.c</in>
+          <in>mcemu_rpc.c</in>
+          <in>mcemu_sys.c</in>
+          <in>mcemu_utils.h</in>
+          <in>mcemu_var.c</in>
+        </df>
+        <df name="network">
+          <df name="smap">
+            <in>common.h</in>
+            <in>irx_imports.h</in>
+            <in>main.c</in>
+            <in>main.h</in>
+            <in>smap.c</in>
+            <in>smsutils.h</in>
+            <in>xfer.c</in>
+            <in>xfer.h</in>
+          </df>
+          <df name="SMSTCPIP">
+            <df name="include">
+              <df name="arch">
+                <in>cc.h</in>
+                <in>sys_arch.h</in>
+              </df>
+              <df name="lwip">
+                <in>api.h</in>
+                <in>api_msg.h</in>
+                <in>arch.h</in>
+                <in>debug.h</in>
+                <in>def.h</in>
+                <in>dhcp.h</in>
+                <in>err.h</in>
+                <in>icmp.h</in>
+                <in>inet.h</in>
+                <in>ip.h</in>
+                <in>ip_addr.h</in>
+                <in>ip_frag.h</in>
+                <in>mem.h</in>
+                <in>memp.h</in>
+                <in>netif.h</in>
+                <in>opt.h</in>
+                <in>pbuf.h</in>
+                <in>raw.h</in>
+                <in>snmp.h</in>
+                <in>sockets.h</in>
+                <in>stats.h</in>
+                <in>sys.h</in>
+                <in>tcp.h</in>
+                <in>tcpip.h</in>
+                <in>udp.h</in>
+              </df>
+              <df name="netif">
+                <in>etharp.h</in>
+                <in>loopif.h</in>
+              </df>
+              <in>irx_imports.h</in>
+              <in>lwipopts.h</in>
+              <in>ps2ip_internal.h</in>
+              <in>smsutils.h</in>
+            </df>
+            <in>api_lib.c</in>
+            <in>api_msg.c</in>
+            <in>etharp.c</in>
+            <in>icmp.c</in>
+            <in>inet.s</in>
+            <in>ip.c</in>
+            <in>ip_addr.c</in>
+            <in>ip_frag.c</in>
+            <in>loopif.c</in>
+            <in>mem.c</in>
+            <in>memp.c</in>
+            <in>netif.c</in>
+            <in>pbuf.c</in>
+            <in>ps2ip.c</in>
+            <in>sockets.c</in>
+            <in>tcp.c</in>
+            <in>tcp_in.c</in>
+            <in>tcp_out.c</in>
+            <in>tcpip.c</in>
+            <in>udp.c</in>
+          </df>
+          <df name="SMSUTILS">
+            <in>SMSUTILS.s</in>
+            <in>smsutils.h</in>
+          </df>
+        </df>
+        <df name="ps2fs">
+          <in>bitmap.c</in>
+          <in>bitmap.h</in>
+          <in>block.c</in>
+          <in>block.h</in>
+          <in>cache.c</in>
+          <in>cache.h</in>
+          <in>dir.c</in>
+          <in>dir.h</in>
+          <in>inode.c</in>
+          <in>inode.h</in>
+          <in>irx_imports.h</in>
+          <in>journal.c</in>
+          <in>journal.h</in>
+          <in>misc.c</in>
+          <in>misc.h</in>
+          <in>pfs.c</in>
+          <in>pfs.h</in>
+          <in>pfs_fio.c</in>
+          <in>pfs_fio.h</in>
+          <in>pfs_fioctl.c</in>
+          <in>pfs_fioctl.h</in>
+          <in>pfs_types.h</in>
+          <in>super.c</in>
+          <in>super.h</in>
+        </df>
+        <df name="usb">
+          <df name="usbd">
+          </df>
+          <df name="usbhdfsd">
+            <df name="doc">
+              <df name="usb_mass">
+              </df>
+            </df>
+            <in>ext2fs.c</in>
+            <in>ext2fs.h</in>
+            <in>fat.h</in>
+            <in>fat_driver.c</in>
+            <in>fat_driver.h</in>
+            <in>fat_write.c</in>
+            <in>fat_write.h</in>
+            <in>fs_driver.c</in>
+            <in>irx_imports.h</in>
+            <in>mass_debug.h</in>
+            <in>mass_stor.h</in>
+            <in>part_driver.c</in>
+            <in>part_driver.h</in>
+            <in>scache.c</in>
+            <in>scache.h</in>
+            <in>usb_driver.c</in>
+            <in>usbhd_common.h</in>
+            <in>usbhdfsd.c</in>
+          </df>
+        </df>
+        <df name="vmc">
+          <df name="genvmc">
+            <in>genvmc.c</in>
+            <in>genvmc.h</in>
+            <in>ioman_add.h</in>
+            <in>irx_imports.h</in>
+          </df>
+          <df name="mcman">
+            <in>cdvdman_add.h</in>
+            <in>irx_imports.h</in>
+            <in>main.c</in>
+            <in>mcdev.c</in>
+            <in>mcman.h</in>
+            <in>mcsio2.c</in>
+            <in>modload_add.h</in>
+            <in>ps1mc_io.c</in>
+            <in>ps2mc_io.c</in>
+            <in>secrman.h</in>
+            <in>sio2man_imports.h</in>
+          </df>
+        </df>
+        <df name="wip">
+          <df name="lanman">
+            <in>arp.c</in>
+            <in>arp.h</in>
+            <in>eth.h</in>
+            <in>inet.h</in>
+            <in>inet.s</in>
+            <in>ip.h</in>
+            <in>irx_imports.h</in>
+            <in>lanman.c</in>
+            <in>lanman.h</in>
+            <in>smap.c</in>
+            <in>smap.h</in>
+            <in>smsutils.h</in>
+            <in>tcp.c</in>
+            <in>tcp.h</in>
+            <in>udp.h</in>
+            <in>udptty.c</in>
+            <in>udptty.h</in>
+          </df>
+        </df>
+      </df>
+      <df name="obj">
+      </df>
+      <df name="pc">
+        <df name="genvmc">
+          <df name="src">
+            <in>genvmc.c</in>
+            <in>genvmc.h</in>
+          </df>
+        </df>
+        <df name="iso2opl">
+          <df name="src">
+            <in>iso2opl.c</in>
+            <in>iso2opl.h</in>
+            <in>isofs.c</in>
+          </df>
+        </df>
+        <df name="opl2iso">
+          <df name="src">
+            <in>opl2iso.c</in>
+            <in>opl2iso.h</in>
+          </df>
+        </df>
+      </df>
+      <df name="scripts">
+      </df>
+      <df name="src">
+        <in>OSDHistory.c</in>
+        <in>appsupport.c</in>
+        <in>atlas.c</in>
+        <in>config.c</in>
+        <in>debug.c</in>
+        <in>dia.c</in>
+        <in>dialogs.c</in>
+        <in>ethsupport.c</in>
+        <in>fntsys.c</in>
+        <in>gui.c</in>
+        <in>hdd.c</in>
+        <in>hddsupport.c</in>
+        <in>ioman.c</in>
+        <in>lang.c</in>
+        <in>menusys.c</in>
+        <in>opl.c</in>
+        <in>pad.c</in>
+        <in>renderman.c</in>
+        <in>supportbase.c</in>
+        <in>system.c</in>
+        <in>texcache.c</in>
+        <in>textures.c</in>
+        <in>themes.c</in>
+        <in>usbsupport.c</in>
+        <in>util.c</in>
+      </df>
+      <df name="tags">
+      </df>
+      <df name="thirdparty">
+      </df>
+      <df name="trunk">
+      </df>
+    </df>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Default" type="0">
+      <toolsSet>
+        <developmentServer>localhost</developmentServer>
+        <platform>2</platform>
+      </toolsSet>
+      <compile>
+        <compiledirpicklist>
+          <compiledirpicklistitem>.</compiledirpicklistitem>
+          <compiledirpicklistitem>${AUTO_FOLDER}</compiledirpicklistitem>
+        </compiledirpicklist>
+        <compiledir>${AUTO_FOLDER}</compiledir>
+        <compilecommandpicklist>
+          <compilecommandpicklistitem>${MAKE} ${ITEM_NAME}.o</compilecommandpicklistitem>
+          <compilecommandpicklistitem>${AUTO_COMPILE}</compilecommandpicklistitem>
+        </compilecommandpicklist>
+        <compilecommand>${AUTO_COMPILE}</compilecommand>
+      </compile>
+      <dbx_gdbdebugger version="1">
+        <gdb_pathmaps>
+        </gdb_pathmaps>
+        <gdb_interceptlist>
+          <gdbinterceptoptions gdb_all="false" gdb_unhandled="true" gdb_unexpected="true"/>
+        </gdb_interceptlist>
+        <gdb_options>
+          <DebugOptions>
+          </DebugOptions>
+        </gdb_options>
+        <gdb_buildfirst gdb_buildfirst_overriden="false" gdb_buildfirst_old="false"/>
+      </dbx_gdbdebugger>
+      <nativedebugger version="1">
+        <engine>gdb</engine>
+      </nativedebugger>
+      <runprofile version="9">
+        <runcommandpicklist>
+          <runcommandpicklistitem>"${OUTPUT_PATH}"</runcommandpicklistitem>
+        </runcommandpicklist>
+        <runcommand>"${OUTPUT_PATH}"</runcommand>
+        <rundir>.</rundir>
+        <buildfirst>false</buildfirst>
+        <terminal-type>0</terminal-type>
+        <remove-instrumentation>0</remove-instrumentation>
+        <environment>
+        </environment>
+      </runprofile>
+    </conf>
+  </confs>
+</configurationDescriptor>

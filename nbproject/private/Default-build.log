@@ -1,0 +1,34 @@
+Building Open PS2 Loader...
+    * Interface
+    * EE core
+    * alternative EE core
+    * Elf Loader
+    * imgdrv.irx
+    * eesync.irx
+    * usb_cdvdman.irx
+    * usb_4Ksectors_cdvdman.irx
+    * smb_cdvdman.irx
+    * smb_pcmcia_cdvdman.irx
+    * hdd_cdvdman.irx
+    * hdd_pcmcia_cdvdman.irx
+    * hdd_hdpro_cdvdman.irx
+    * cdvdfsv.irx
+    * usbhdfsd.irx
+    * cddev.irx
+    * ps2dev9.irx
+    * SMSUTILS.irx
+    * SMSTCPIP.irx
+    * in-game SMSTCPIP.irx
+    * SMAP.irx
+    * discID.irx
+    * ps2atad.irx
+    * hdpro_atad.irx
+    * ps2hdd.irx
+    * genvmc.irx
+    * hdldsvr.irx
+    * udptty.irx
+    * ps2fs.irx
+    * ioptrap.irx
+    * ps2link.irx
+Stripping...
+Compressing...
